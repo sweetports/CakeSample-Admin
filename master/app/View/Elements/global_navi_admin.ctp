@@ -12,7 +12,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
 <!--                <li>管理者ログイン中</li>-->
-                <li><?php echo $this->Html->link(__('ログアウト'), array('controller'=>'admins','action' => 'logout')); ?></li>
+                <li><?php echo $this->Html->link(__('Sign out'), array('controller'=>'admins','action' => 'logout')); ?></li>
             </ul>
         </div>
     </div>

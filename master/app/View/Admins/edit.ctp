@@ -1,25 +1,39 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h2 class="sub-header"><?php echo __('Admins'); ?></h2>
-    <div class="table-responsive">
-    <?php echo $this->Form->create('Admin'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit Admin'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('username');
-		echo $this->Form->input('del_flg');
-		echo $this->Form->input('status');
-		echo $this->Form->input('password');
-	?>
-	</fieldset>
-    <?php echo $this->Form->end(__('Submit')); ?>
+    <div class="actions text-right">
+        <?php echo $this->Html->link(__('List Admin'), array('action' => 'index'),array('class'=>"btn btn-mini btn-primary")); ?>
     </div>
-</div>
 
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Admin.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Admin.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Admins'), array('action' => 'index')); ?></li>
-	</ul>
+    <div class="table-responsive">
+    <?php echo $this->Form->create('Admin',array('type'=>'file','role'=>'form')); ?>
+
+        <div class="form-group input-group-lg">
+            <label>Username</label>
+            <?php echo $this->Form->input('Admin.username',array('label'=>false,'class'=>'form-control'));?>
+        </div>
+        <div class="form-group input-group-lg">
+            <label>Password</label>
+            <?php
+            echo $this->Form->input('password',array(
+                    'label'=>false,
+                    'class'=>'form-control'
+                )
+            );
+            ?>
+        </div>
+        <div class="form-group input-group-lg">
+            <label>Status</label>
+            <?php
+            echo $this->Form->input('status',array(
+                    'type' => 'select',
+                    'options' => $select_status,
+                    'label'=>false,
+                    'class'=>'form-control'
+                )
+            );
+            ?>
+        </div>
+
+    <button class="btn btn-lg btn-primary" type="submit">Update</button>
+    </form>
 </div>

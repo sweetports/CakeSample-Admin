@@ -7,9 +7,7 @@
             <th><?php echo $this->Paginator->sort('username'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-<!--			<th>--><?php //echo $this->Paginator->sort('del_flg'); ?><!--</th>-->
 			<th><?php echo $this->Paginator->sort('status'); ?></th>
-<!--			<th>--><?php //echo $this->Paginator->sort('password'); ?><!--</th>-->
 			<th class="actions"><?php echo __('Actions'); ?></th>
         </tr>
         <?php foreach ($admins as $admin): ?>
@@ -18,34 +16,35 @@
             <td><?php echo h($admin['Admin']['username']); ?>&nbsp;</td>
             <td><?php echo h($admin['Admin']['created']); ?>&nbsp;</td>
             <td><?php echo h($admin['Admin']['modified']); ?>&nbsp;</td>
-<!--            <td>--><?php //echo h($admin['Admin']['del_flg']); ?><!--&nbsp;</td>-->
-            <td><?php echo h($admin['Admin']['status']); ?>&nbsp;</td>
-<!--            <td>--><?php //echo h($admin['Admin']['password']); ?><!--&nbsp;</td>-->
+            <td><?php
+                if($admin['Admin']['status'] == 0){
+                    echo '<span class="label label-info">Active</span>';
+                }else{
+                    echo '<span class="label label-default">stop</span>';
+                }
+                ?>&nbsp;</td></td>
             <td class="actions">
-                <?php echo $this->Html->link(__('View'), array('action' => 'view', $admin['Admin']['id'])); ?>
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $admin['Admin']['id'])); ?>
+                <?php echo $this->Html->link(__('<span class="btn btn-success">edit</span>'), array('action' => 'edit', $admin['Admin']['id']),array('escape'=>false)); ?>
+                <?php echo $this->Form->postLink(__('✕'), array('action' => 'delete', $this->Form->value('Admin.id')),array('class'=>"btn btn-danger"), __('Are you sure you want to delete # %s?', $this->Form->value('Admin.id'))); ?>
             </td>
         </tr>
         <?php endforeach; ?>
 	    </table>
         <p>
-        <?php
-        echo $this->Paginator->counter(array(
-        'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-        ));
-        ?>	</p>
-        <div class="paging">
-        <?php
-            echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-            echo $this->Paginator->numbers(array('separator' => ''));
-            echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-        ?>
-        </div>
-        <div class="actions">
-            <h3><?php echo __('Actions'); ?></h3>
-            <ul>
-                <li><?php echo $this->Html->link(__('New Admin'), array('action' => 'add')); ?></li>
-            </ul>
+            <?php
+            echo $this->Paginator->counter(array(
+                'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+            ));
+            ?>	</p>
+        <ul class="pagination">
+            <?php
+            echo $this->Paginator->prev(__('prev'), array('tag'=>'li'), null, array('tag'=>'li','class' => 'disabled','disabledTag'=>'a'));
+            echo $this->Paginator->numbers(array('separator' => '','currentTag' => 'a', 'currentClass' => 'active','tag' => 'li','first' => 1, 'ellipsis' => '<li class="disabled"><a>...</a></li>'));
+            echo $this->Paginator->next(__('next'), array('tag'=>'li'), null, array('tag'=>'li','class' => 'disabled','disabledTag'=>'a'));
+            ?>
+        </ul>
+        <div class="text-right">
+            <?php echo $this->Html->link(__('New Admin'), array('action' => 'add')); ?>
         </div>
     </div>
 </div>
