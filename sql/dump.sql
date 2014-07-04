@@ -7,7 +7,7 @@ CREATE TABLE `admins` (
   `status` tinyint(1) unsigned zerofill DEFAULT '0',
   `password` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `attachments` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -21,7 +21,7 @@ CREATE TABLE `attachments` (
   `active` tinyint(1) DEFAULT '1',
   `del_flg` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `informations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -31,8 +31,9 @@ CREATE TABLE `informations` (
   `modified` datetime NOT NULL,
   `del_flg` tinyint(1) unsigned zerofill DEFAULT '0',
   `status` tinyint(1) unsigned zerofill DEFAULT '0',
+  `del_flg` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
