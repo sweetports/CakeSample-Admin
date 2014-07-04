@@ -1,6 +1,9 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h2 class="sub-header"><?php echo __('お知らせ'); ?></h2>
+            <h2 class="sub-header"><?php echo __('Information'); ?></h2>
             <div class="table-responsive">
+                <div class="text-right">
+                    <?php echo $this->Html->link(__('<span class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add</span>'), array('action' => 'add'),array('escape'=>false)); ?>
+                </div>
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -19,8 +22,6 @@
                             <td><?php echo h($information['Information']['id']); ?>&nbsp;</td>
                             <td><?php echo h($information['Information']['name']); ?>&nbsp;</td>
                             <td><?php
-                                //echo h($information['Attachment'][0]['imgpath']);
-
                                 if(!empty($information['Attachment'])){
                                     foreach($information['Attachment'] as $image){
                                         if($image['del_flg']==0){
@@ -37,14 +38,14 @@
                             <td><?php echo h($information['Information']['modified']); ?>&nbsp;</td>
                             <td><?php
                                     if($information['Information']['status'] == 0){
-                                        echo '<span class="label label-warning">表示中</span>';
+                                        echo '<span class="label label-info">On</span>';
                                     }else{
-                                        echo '<span class="label label-default">非表示</span>';
+                                        echo '<span class="label label-default">off</span>';
                                     }
                                 ?>&nbsp;</td>
                             <td class="actions">
-                                <?php echo $this->Html->link(__('<span class="btn btn-success">edit</span>'), array('action' => 'edit', $information['Information']['id']),array('escape'=>false)); ?>
-                                <?php echo $this->Form->postLink(__('✕'), array('action' => 'delete', $this->Form->value('Information.id')),array('class'=>"btn btn-danger"), __('Are you sure you want to delete # %s?', $this->Form->value('Information.id'))); ?>
+                                <?php echo $this->Html->link(__('<span class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>&nbsp;Edit</span>'), array('action' => 'edit', $information['Information']['id']),array('escape'=>false)); ?>
+<!--                                --><?php //echo $this->Form->postLink(__('<span class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>&nbsp;Delete</span>'), array('action' => 'delete', $this->Form->value('Information.id')),array('escape'=>false), __('Are you sure you want to delete # %s?', $this->Form->value('Information.id'))); ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -63,8 +64,5 @@
                     echo $this->Paginator->next(__('next'), array('tag'=>'li'), null, array('tag'=>'li','class' => 'disabled','disabledTag'=>'a'));
                     ?>
                 </ul>
-                <div class="actions">
-                    <?php echo $this->Html->link(__('Add'), array('action' => 'add')); ?>
-                </div>
             </div>
         </div>
