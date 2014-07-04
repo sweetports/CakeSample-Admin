@@ -59,6 +59,10 @@ class InformationController extends AppController {
 	public function add() {
         $this->Information->recursive = 1;
         $this->layout = 'admin';
+
+        $select_status = array('0' => '表示中','1'=>'非表示');
+        $this->set(compact('select_status'));
+
 		if ($this->request->is('post')) {
 			$this->Information->create();
             try {
@@ -84,40 +88,71 @@ class InformationController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 
+            /*****************************************
+             *  画像フィールド未入力時
+             *****************************************/
+            if(empty($this->request->data['Attachment']['0']['photo_information']['size'])){
 
-            //既存画像データの処理
-            $data = array(
-                'Attachment.del_flg' => '1',
-            );
-            $conditions = array(
-                'Attachment.del_flg' => '0',
-                'Attachment.foreign_key' => $id,
-            );
-            $this->Information->Attachment->updateAll($data, $conditions);
+                /*　画像データの取得 */
+                $options_file = array(
+                    'conditions' => array(
+                        'Attachment.foreign_key' => $id,
+                        'Attachment.del_flg' => 0,
+                    )  ,
+                    'order' => array('Attachment.id DESC'),
+                    'limit' => 1
+                );
+                $files = $this->Information->Attachment->find('all',$options_file);
 
-			if ($this->Information->saveAll($this->request->data)) {
-				$this->Session->setFlash(__('The information has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The information could not be saved. Please, try again.'));
-			}
-		} else {
+                if(!empty($files)){
+                    $this->request->data['Attachment']['0'] = $files['0']['Attachment'];
+                }
 
-            /*　画像データの取得 */
-            $options_file = array(
-                'conditions' => array(
+                if ($this->Information->saveAll($this->request->data)) {
+                    $this->Session->setFlash(__('The information has been saved.'));
+    				return $this->redirect(array('action' => 'index'));
+                } else {
+                    $this->Session->setFlash(__('The information could not be saved. Please, try again.'));
+                }
+
+            /*****************************************
+             *  画像あり
+             *****************************************/
+            }else{
+                //既存画像データの処理
+                $data = array(
+                    'Attachment.del_flg' => '1',
+                );
+                $conditions = array(
+                    'Attachment.del_flg' => '0',
                     'Attachment.foreign_key' => $id,
-                    'Attachment.del_flg' => 0,
-                )  ,
-                'order' => array('Attachment.id DESC'),
-                'limit' => 8
-            );
-            $files = $this->Information->Attachment->find('all',$options_file);
-            $this->set('files',$files);
+                );
+                $this->Information->Attachment->updateAll($data, $conditions);
+                if ($this->Information->saveAll($this->request->data)) {
+                    $this->Session->setFlash(__('The information has been saved.'));
+//				return $this->redirect(array('action' => 'index'));
+                } else {
+                    $this->Session->setFlash(__('The information could not be saved. Please, try again.'));
+                }
+            }
 
+		} else {
 			$options = array('conditions' => array('Information.' . $this->Information->primaryKey => $id));
 			$this->request->data = $this->Information->find('first', $options);
 		}
+        /*　画像データの取得 */
+        $options_file = array(
+            'conditions' => array(
+                'Attachment.foreign_key' => $id,
+                'Attachment.del_flg' => 0,
+            )  ,
+            'order' => array('Attachment.id DESC'),
+            'limit' => 1
+        );
+        $files = $this->Information->Attachment->find('all',$options_file);
+        $select_status = array('0' => '表示中','1'=>'非表示');
+
+        $this->set(compact('files','select_status'));
 	}
 
 /**

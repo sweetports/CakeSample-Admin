@@ -15,7 +15,20 @@
         <?php echo $this->Form->input('Attachment.0.model', array('type' => 'hidden','value'=>'Information')); ?>
         <?php echo $this->Form->input('Attachment.0.dir', array('type' => 'hidden','value'=>'Information')); ?>
     </div>
-    <?php echo $this->Form->end(__('新規登録'),array('div'=>false,'class'=>'btn btn-default btn-lg')); ?>
+    <div class="form-group input-group-lg">
+        <label>ステータス</label>
+        <?php
+        echo $this->Form->input('status',array(
+                'type' => 'select',
+                'options' => $select_status,
+                'label'=>false,
+                'class'=>'form-control'
+            )
+        );
+        ?>
+    </div>
+    <button class="btn btn-lg btn-primary" type="submit">登録する</button>
+    </form>
     <div class="actions">
         <h3><?php echo __('Actions'); ?></h3>
         <ul>

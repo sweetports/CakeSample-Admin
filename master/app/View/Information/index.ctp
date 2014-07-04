@@ -32,13 +32,19 @@
                                 }else{
                                     echo "-";
                                 }
-
                                 ?>&nbsp;</td>
                             <td><?php echo h($information['Information']['created']); ?>&nbsp;</td>
                             <td><?php echo h($information['Information']['modified']); ?>&nbsp;</td>
-                            <td><?php echo h($information['Information']['status']); ?>&nbsp;</td>
+                            <td><?php
+                                    if($information['Information']['status'] == 0){
+                                        echo '<span class="label label-warning">表示中</span>';
+                                    }else{
+                                        echo '<span class="label label-default">非表示</span>';
+                                    }
+                                ?>&nbsp;</td>
                             <td class="actions">
-                                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $information['Information']['id'])); ?>
+                                <?php echo $this->Html->link(__('<span class="btn btn-success">edit</span>'), array('action' => 'edit', $information['Information']['id']),array('escape'=>false)); ?>
+                                <?php echo $this->Form->postLink(__('✕'), array('action' => 'delete', $this->Form->value('Information.id')),array('class'=>"btn btn-danger"), __('Are you sure you want to delete # %s?', $this->Form->value('Information.id'))); ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
