@@ -5,7 +5,7 @@
                     <?php echo $this->Html->link(__('<span class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add</span>'), array('action' => 'add'),array('escape'=>false)); ?>
                 </div>
                 <table class="table table-striped">
-                    <thead>
+                    <thead>　
                     <tr>
                         <th><?php echo $this->Paginator->sort('id'); ?></th>
                         <th><?php echo $this->Paginator->sort('title'); ?></th>
@@ -45,7 +45,6 @@
                                 ?>&nbsp;</td>
                             <td class="actions">
                                 <?php echo $this->Html->link(__('<span class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>&nbsp;Edit</span>'), array('action' => 'edit', $information['Information']['id']),array('escape'=>false)); ?>
-<!--                                --><?php //echo $this->Form->postLink(__('<span class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>&nbsp;Delete</span>'), array('action' => 'delete', $this->Form->value('Information.id')),array('escape'=>false), __('Are you sure you want to delete # %s?', $this->Form->value('Information.id'))); ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

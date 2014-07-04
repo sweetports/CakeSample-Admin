@@ -131,9 +131,10 @@ class AdminsController extends AppController {
 		} else {
 			$this->request->data = $this->Admin->read(null, $id);
 		}
-	}    
-    
-    
+        $select_status = array('0' => 'Active','1'=>'Stop');
+        $this->set(compact('select_status'));
+	}
+
 /**
  * delete method
  *

@@ -150,7 +150,7 @@ class InformationController extends AppController {
             'limit' => 1
         );
         $files = $this->Information->Attachment->find('all',$options_file);
-        $select_status = array('0' => '表示中','1'=>'非表示');
+        $select_status = array('0' => 'Active','1'=>'Off');
 
         $this->set(compact('files','select_status'));
 	}
