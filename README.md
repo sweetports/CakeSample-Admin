@@ -1,7 +1,7 @@
 CakeSample-Admin
 ================
 
-![alt text](https://github.com/sweetports/CakeSample-Admin/blob/master/sample_image.jpg)
+![SampleImage](https://github.com/sweetports/CakeSample-Admin/blob/master/sample_image.jpg)
 
 #このソースについて
 CakePHPの基本的な動作を確認するためのソースです。
