@@ -1,7 +1,7 @@
 CakeSample-Admin
 ================
 
-![SampleImage](http://imgur.com/53HOyJK)
+![SampleImage](http://i.imgur.com/53HOyJK.jpg)
 
 #このソースについて
 CakePHPの基本的な動作を確認するためのソースです。
