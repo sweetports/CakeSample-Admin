@@ -54,14 +54,25 @@ class AppController extends Controller {
                     )
                 )
             )
-        )
+        ),
+        'Cookie'
     );
     public function beforeFilter()
     {
+        //自動ログイン
+        if(!$this->Auth->user('Admin')){
+            if($this->Cookie->read('Auth.Admin')){
+                if($this->Auth->login($this->Cookie->read('Auth.Admin.id'))){
+                    $username = $this->Auth->user('username');
+                    if(!empty($username)){
+                        $this->set('username', $username);
+                    }
+                }
+            }
+        }
         $username = $this->Auth->user('username');
         if(!empty($username)){
             $this->set('username', $username);
         }
     }
-
 }
