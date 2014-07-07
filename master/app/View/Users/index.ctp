@@ -1,5 +1,5 @@
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h2 class="sub-header"><?php echo __('Admins'); ?></h2>
+        <h2 class="sub-header"><?php echo __('Users'); ?></h2>
         <div class="table-responsive">
             <p>
                 <?php
@@ -9,7 +9,6 @@
                 ?>&nbsp;&nbsp;
                 <?php echo $this->Html->link(__('<span class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add</span>'), array('action' => 'add'),array('escape'=>false)); ?>
             </p>
-
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -23,22 +22,22 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($admins as $admin): ?>
+                <?php foreach ($users as $user): ?>
                 <tr>
-                    <td><?php echo h($admin['Admin']['id']); ?>&nbsp;</td>
-                    <td><?php echo h($admin['Admin']['username']); ?>&nbsp;</td>
-                    <td><?php echo h($admin['Admin']['nickname']); ?>&nbsp;</td>
-                    <td><?php echo h($admin['Admin']['created']); ?>&nbsp;</td>
-                    <td><?php echo h($admin['Admin']['modified']); ?>&nbsp;</td>
+                    <td><?php echo h($user['User']['id']); ?>&nbsp;</td>
+                    <td><?php echo h($user['User']['username']); ?>&nbsp;</td>
+                    <td><?php echo h($user['User']['nickname']); ?>&nbsp;</td>
+                    <td><?php echo h($user['User']['created']); ?>&nbsp;</td>
+                    <td><?php echo h($user['User']['modified']); ?>&nbsp;</td>
                     <td><?php
-                        if($admin['Admin']['status'] == 0){
+                        if($user['User']['status'] == 0){
                             echo '<span class="label label-info">On</span>';
                         }else{
                             echo '<span class="label label-default">Off</span>';
                         }
                         ?>&nbsp;</td></td>
                     <td class="actions">
-                        <?php echo $this->Html->link(__('<span class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>&nbsp;Edit</span>'), array('action' => 'edit', $admin['Admin']['id']),array('escape'=>false)); ?>
+                        <?php echo $this->Html->link(__('<span class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>&nbsp;Edit</span>'), array('action' => 'edit', $user['User']['id']),array('escape'=>false)); ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

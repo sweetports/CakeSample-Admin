@@ -1,9 +1,14 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h2 class="sub-header"><?php echo __('Information'); ?></h2>
             <div class="table-responsive">
-                <div class="text-right">
+                <p>
+                    <?php
+                    echo $this->Paginator->counter(array(
+                        'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+                    ));
+                    ?>&nbsp;&nbsp;
                     <?php echo $this->Html->link(__('<span class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add</span>'), array('action' => 'add'),array('escape'=>false)); ?>
-                </div>
+                </p>
                 <table class="table table-striped">
                     <thead>　
                     <tr>

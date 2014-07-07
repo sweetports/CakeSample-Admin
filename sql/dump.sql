@@ -37,8 +37,8 @@ CREATE TABLE `informations` (
 
 CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(32) NOT NULL,
-  `email` varchar(128) DEFAULT NULL,
+  `username` varchar(128) NOT NULL,
+  `nickname` varchar(128) DEFAULT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   `del_flg` tinyint(1) unsigned zerofill DEFAULT '0',

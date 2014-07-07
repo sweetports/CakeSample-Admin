@@ -131,7 +131,7 @@ class AdminsController extends AppController {
 		} else {
 			$this->request->data = $this->Admin->read(null, $id);
 		}
-        $select_status = array('0' => 'Active','1'=>'Stop');
+        $select_status = array('0' => 'On','1'=>'Off');
         $this->set(compact('select_status'));
 	}
 

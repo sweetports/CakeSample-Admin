@@ -1,19 +1,19 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <h2 class="sub-header"><?php echo __('Admins'); ?></h2>
+    <h2 class="sub-header"><?php echo __('Users'); ?></h2>
     <div class="actions text-right">
         <?php echo $this->Html->link(__('<span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Back'), array('action' => 'index'),array('class'=>'','escape'=>false)); ?>
     </div>
 
     <div class="table-responsive">
-    <?php echo $this->Form->create('Admin',array('type'=>'file','role'=>'form')); ?>
+    <?php echo $this->Form->create('User',array('type'=>'file','role'=>'form')); ?>
 
         <div class="form-group input-group-lg">
-            <label>ID(E-mail)</label>
-            <?php echo $this->Form->input('Admin.username',array('label'=>false,'class'=>'form-control'));?>
+            <label>Username</label>
+            <?php echo $this->Form->input('User.username',array('label'=>false,'class'=>'form-control'));?>
         </div>
         <div class="form-group input-group-lg">
             <label>Nickname</label>
-            <?php echo $this->Form->input('nickname',array('label'=>false,'class'=>'form-control'));?>
+            <?php echo $this->Form->input('User.nickname',array('label'=>false,'class'=>'form-control'));?>
         </div>
         <div class="form-group input-group-lg">
             <label>Password</label>

@@ -56,4 +56,12 @@ class AppController extends Controller {
             )
         )
     );
+    public function beforeFilter()
+    {
+        $username = $this->Auth->user('username');
+        if(!empty($username)){
+            $this->set('username', $username);
+        }
+    }
+
 }

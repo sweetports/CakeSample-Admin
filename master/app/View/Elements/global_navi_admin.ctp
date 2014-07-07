@@ -11,7 +11,14 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-<!--                <li>管理者ログイン中</li>-->
+                <li><a name="username">
+                    <?php
+                    if(!empty($username)){
+                        echo "<span class=''>".$username."</span>";
+                    }
+                    ?></a>
+                </li>
+
                 <li><?php echo $this->Html->link(__('Sign out'), array('controller'=>'admins','action' => 'logout')); ?></li>
             </ul>
         </div>
