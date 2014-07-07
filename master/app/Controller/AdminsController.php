@@ -11,7 +11,7 @@ class AdminsController extends AppController {
 
     public
         $uses = Array('Admin'),
-	    $components = array('Paginator','Session');
+	    $components = array('Paginator','Session','Cookie');
  
     public function beforeFilter()
     {
@@ -40,7 +40,9 @@ class AdminsController extends AppController {
     public function login() {
         $this->layout = 'login';
         if($this->request->is('post')) {
+            // Cookie login
             if($this->Auth->login()) {
+                $this->Cookie->write('Auth.Admin.id', $this->request->data['Admin']['id'], false, '+4 weeks');
                 $this->redirect($this->Auth->redirectUrl());
             } else {
                 $this->Session->setFlash(__('Username or password is incorrect'), 'default', array(), 'auth');
@@ -61,8 +63,10 @@ class AdminsController extends AppController {
             $this->set('admin', $this->Admin->read(null, $id));
     }
  
-    public function logout($id = null)
-    {
+    public function logout($id = null){
+        $this->Cookie->delete('Auth.Admin.id'); //delete cookie
+        $this->Session->destroy();
+        $this->Session->delete('Auth.Admin');
         $this->redirect($this->Auth->logout('/admin/login'));
     }
  
@@ -79,8 +83,6 @@ class AdminsController extends AppController {
             }
         }
     }
-
-    
 
 /**
  * edit method
