@@ -46,3 +46,14 @@ CREATE TABLE `users` (
   `password` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `informations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `content` longtext,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  `del_flg` tinyint(1) unsigned zerofill DEFAULT '0',
+  `status` tinyint(1) unsigned zerofill DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
