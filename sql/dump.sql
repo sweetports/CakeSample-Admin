@@ -56,4 +56,4 @@ CREATE TABLE `informations` (
   `del_flg` tinyint(1) unsigned zerofill DEFAULT '0',
   `status` tinyint(1) unsigned zerofill DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
