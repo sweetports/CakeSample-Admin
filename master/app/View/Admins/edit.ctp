@@ -1,5 +1,5 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <h2 class="sub-header"><?php echo __('Admins'); ?></h2>
+    <h2 class="sub-header"><?php echo __('Edit Admin'); ?></h2>
     <div class="actions text-right">
         <?php echo $this->Html->link(__('<span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Back'), array('action' => 'index'),array('class'=>'','escape'=>false)); ?>
     </div>

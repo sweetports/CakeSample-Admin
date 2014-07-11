@@ -1,6 +1,6 @@
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <h2 class="sub-header"><?php echo __('Admins'); ?></h2>
-        <div class="table-responsive">
+        <div class="table table-responsive">
             <p>
                 <?php
                 echo $this->Paginator->counter(array(
@@ -10,13 +10,12 @@
                 <?php echo $this->Html->link(__('<span class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add</span>'), array('action' => 'add'),array('escape'=>false)); ?>
             </p>
 
-            <table class="table table-striped">
+            <table class="table table-responsive table-striped">
                 <thead>
                 <tr>
                     <th><?php echo $this->Paginator->sort('id'); ?></th>
                     <th><?php echo $this->Paginator->sort('username'); ?></th>
                     <th><?php echo $this->Paginator->sort('nickname'); ?></th>
-                    <th><?php echo $this->Paginator->sort('created'); ?></th>
                     <th><?php echo $this->Paginator->sort('modified'); ?></th>
                     <th><?php echo $this->Paginator->sort('status'); ?></th>
                     <th class="actions"><?php echo __('Actions'); ?></th>
@@ -28,7 +27,6 @@
                     <td><?php echo h($admin['Admin']['id']); ?>&nbsp;</td>
                     <td><?php echo h($admin['Admin']['username']); ?>&nbsp;</td>
                     <td><?php echo h($admin['Admin']['nickname']); ?>&nbsp;</td>
-                    <td><?php echo h($admin['Admin']['created']); ?>&nbsp;</td>
                     <td><?php echo h($admin['Admin']['modified']); ?>&nbsp;</td>
                     <td><?php
                         if($admin['Admin']['status'] == 0){

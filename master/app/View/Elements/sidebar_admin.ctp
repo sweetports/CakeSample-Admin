@@ -5,6 +5,5 @@
         <li><?php echo $this->Html->link(__('<span class="fa fa-info-circle fa-2x"></span>&nbsp;Information'), array('controller'=>'information','action' => 'index','div'=>false),array('escape'=>false)); ?></li>
         <li class="divider"></li>
         <li><?php echo $this->Html->link(__('<span class="fa fa-user fa-2x"></span>&nbsp;Admin'), array('controller'=>'admins','action' => 'index','div'=>false),array('escape'=>false)); ?></li>
-        <li><?php echo $this->Html->link(__('<span class="fa fa-sign-out fa-2x"></span>&nbsp;Sign out'), array('controller'=>'admins','action' => 'logout','div'=>false),array('escape'=>false)); ?></li>
     </ul>
 </div>

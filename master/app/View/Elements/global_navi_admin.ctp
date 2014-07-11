@@ -11,15 +11,16 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a name="username">
-                    <?php
-                    if(!empty($username)){
-                        echo "<span class=''>".$username."</span>";
-                    }
-                    ?></a>
+                <li class="dropdown">
+                    <a href="/admins/edit/<?php echo $userid;?>" ><span class="glyphicon glyphicon-user"></span>&nbsp;
+                        <?php
+                        if(!empty($username)){
+                            echo "<span class=''>".$username."</span>";
+                        }
+                        ?></a>
                 </li>
-
-                <li><?php echo $this->Html->link(__('Sign out'), array('controller'=>'admins','action' => 'logout')); ?></li>
+                <li class="divider"></li>
+                <li><a href="/admins/logout""><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></li>
             </ul>
         </div>
     </div>
