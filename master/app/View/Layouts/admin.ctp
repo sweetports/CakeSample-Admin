@@ -10,6 +10,7 @@
 <meta name="copyright" content="(c). All Rights Reserved." />
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <?php echo $this->Html->css('dashboard');?>
+<?php echo $this->Html->css('font-awesome.min');?>
 </head>
 <body>
 <?php echo $this->element('global_navi_admin'); ?>
