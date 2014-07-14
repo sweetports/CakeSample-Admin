@@ -20,7 +20,8 @@
             <?php
             echo $this->Form->input('password',array(
                     'label'=>false,
-                    'class'=>'form-control'
+                    'class'=>'form-control',
+                    'default'=>''
                 )
             );
             ?>
