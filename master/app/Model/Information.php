@@ -26,6 +26,7 @@ class Information extends AppModel {
             'foreignKey' => 'foreign_key',
             'conditions' => array(
                 'Attachment.model' => 'Information',
+                'Attachment.del_flg'=>0
             ),
         ),
     );

@@ -24,7 +24,7 @@
 
                 if(!empty($img['Attachment']['photo_information'])){
                     echo '<img src="'.DS.'files'.DS.'attachment'.DS.'photo_information'.DS.$img['Attachment']['id'].DS.$img['Attachment']['photo_information'].'">';
-                    echo $this->Form->input('Attachment.0.del_flg', array('type' => 'checkbox','label'=>false,'checked'=>false,'after'=>'Remove this image'));
+                    echo $this->Form->input('Attachment.del_flg_check', array('type' => 'checkbox','value' => 1,'label'=>false,'checked'=>false,'after'=>'Remove this image'));
                 }else{
                     echo 'No image';
                 }
