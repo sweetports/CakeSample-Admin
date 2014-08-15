@@ -97,7 +97,7 @@ class InformationController extends AppController {
                 $options_file = array(
                     'conditions' => array(
                         'Attachment.foreign_key' => $id,
-                        'Attachment.del_flg' => 0,
+                        'Attachment.del_flg not' => 1,
                     )  ,
                     'order' => array('Attachment.id DESC'),
                     'limit' => 1
@@ -108,17 +108,22 @@ class InformationController extends AppController {
                     $this->request->data['Attachment']['0'] = $files['0']['Attachment'];
                 }
 
+                if($this->request->data['Attachment']['del_flg_check']==1){
+                    $this->request->data['Attachment']['0']['del_flg'] = 0;
+                }
+
                 if ($this->Information->saveAll($this->request->data)) {
                     $this->Session->setFlash(__('The information has been saved.'));
     				return $this->redirect(array('action' => 'index'));
                 } else {
                     $this->Session->setFlash(__('The information could not be saved. Please, try again.'));
+                    return $this->redirect(array('action' => 'index'));
                 }
-
+            }
             /*****************************************
              *  画像あり
              *****************************************/
-            }else{
+            else{
                 //既存画像データの処理
                 $data = array(
                     'Attachment.del_flg' => '1',
@@ -130,7 +135,7 @@ class InformationController extends AppController {
                 $this->Information->Attachment->updateAll($data, $conditions);
                 if ($this->Information->saveAll($this->request->data)) {
                     $this->Session->setFlash(__('The information has been saved.'));
-//				return $this->redirect(array('action' => 'index'));
+				    return $this->redirect(array('action' => 'index'));
                 } else {
                     $this->Session->setFlash(__('The information could not be saved. Please, try again.'));
                 }

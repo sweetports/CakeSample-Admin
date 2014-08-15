@@ -1,6 +1,12 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h2 class="sub-header"><?php echo __('Information'); ?></h2>
             <div class="table-responsive">
+
+                <?php
+                    if($this->Session->flash()){
+                        echo "<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert'>&times;</a>".$this->Session->flash()."</div>";
+                    }
+                ?>
                 <p>
                     <?php
                     echo $this->Paginator->counter(array(
@@ -32,12 +38,11 @@
                                         if(!empty($image['photo_information']) && $image['del_flg']==0){
                                             echo '<img src="'.DS.'files'.DS.'attachment'.DS.'photo_information'.DS.$image['id'].DS.$image['photo_information'].'" width="50px">';
                                         }else{
-//                                            echo "-";
-//                                            break;
+                                            echo "no image";
                                         }
                                     }
                                 }else{
-                                    echo "-";
+                                    echo "no image";
                                 }
                                 ?></td>
                             <td><?php echo h($information['Information']['created']); ?>&nbsp;</td>

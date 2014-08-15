@@ -1,6 +1,11 @@
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <h2 class="sub-header"><?php echo __('Admins'); ?></h2>
         <div class="table table-responsive">
+            <?php
+                if($this->Session->flash()){
+                    echo "<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert'>&times;</a>".$this->Session->flash()."</div>";
+                }
+            ?>
             <p>
                 <?php
                 echo $this->Paginator->counter(array(
